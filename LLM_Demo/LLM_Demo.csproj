@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Charset>UTF-8</Charset>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="41xpla51.wpn~" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.66" />
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.5" />
+		<PackageReference Include="Microsoft.KernelMemory" Version="0.98.250508.3" />
+		<PackageReference Include="Microsoft.KernelMemory.WebClient" Version="0.98.250508.3" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.52.1" />
+		<PackageReference Include="Microsoft.SemanticKernel.Agents.core" Version="1.52.1" />
+		<PackageReference Include="Microsoft.SemanticKernel.Connectors.OpenAI" Version="1.52.1" />
+		<PackageReference Include="MiniExcel" Version="1.41.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+
+</Project>
