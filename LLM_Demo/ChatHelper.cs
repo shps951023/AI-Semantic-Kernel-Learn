@@ -19,25 +19,5 @@ public class ChatHelper
         }
         Console.WriteLine("---- 结束查询 ----");
     }
-
-    public static async Task Chat2(Kernel kernel, string chatMessage)
-    {
-        ChatCompletionAgent agent =
-            new()
-            {
-                Name = "SK-Assistant",
-                Instructions = "You are a helpful assistant.",
-                Kernel = kernel,
-                Arguments = new KernelArguments(new PromptExecutionSettings() { FunctionChoiceBehavior = FunctionChoiceBehavior.Auto() })
-
-            };
-
-        await foreach (AgentResponseItem<ChatMessageContent> response
-            in agent.InvokeAsync("What is the price of the soup special?"))
-        {
-            Console.WriteLine(response.Message);
-        }
-        Console.WriteLine("---- 结束查询 ----");
-    }
 }
 

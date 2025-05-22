@@ -12,7 +12,7 @@ public class 底层逻辑
     {
         var kernelBuilder = Kernel.CreateBuilder();
         kernelBuilder.AddOpenAIChatCompletion(
-            modelId: "qwen3:0.6b",
+            modelId: "qwen3:14b",
             endpoint: new Uri("http://localhost:11434/v1"),
             apiKey: null,
             httpClient: DemoLogger.GetHttpClient(true)
@@ -27,8 +27,8 @@ public class 底层逻辑
             ToolCallBehavior = ToolCallBehavior.AutoInvokeKernelFunctions
         };
         var response = await kernel.InvokePromptAsync(
-@"请帮忙汇总 AXA-200 产品在 2025-01-01 到 2025-05-20 异常单情况
-需要特别注意的前几种异常类型跟避免建议"
+@"请帮忙列出 AXA-200 产品在 2025-01-01 到 2025-05-20 异常单情况
+需要特别注意的异常类型跟避免建议"
         , new(openAIPromptExecutionSettings));
         Console.WriteLine(response);
 
@@ -47,7 +47,8 @@ public class 底层逻辑
             if (eDate == null)
                 eDate = DateTime.Now;
             using SqliteConnection connection = Db.GetConnection();
-            var results = connection.Query(@"SELECT title,product_no,occur_time,location,type,solution FROM AbnormalReport 
+            var results = connection.Query(@"SELECT title,product_no,occur_time,location,type,solution 
+FROM AbnormalReport 
 WHERE product_no like @product_no and occur_time BETWEEN @sDate AND @eDate"
                 , new { product_no, sDate, eDate });
 
